@@ -99,9 +99,6 @@ local skill = getSkill();
 
 local function attack(target)
     for i = 1, 4 do
-        print(skill);
-        print(target);
-        print(rpcKey);
         replicatedStorage.Event:FireServer("Skills", {"UseSkill", skill});
         replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", skill, 1, target});
     end;
