@@ -136,8 +136,8 @@ local bosses = {
     };
 
     [555980327] = {
-        "Ra'thae the Ice King ";
-        "Qerach The Forgotten Golem ";
+        "Ra'thae the Ice King";
+        "Qerach The Forgotten Golem";
     };
 
     [572487908] = {
