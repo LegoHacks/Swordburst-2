@@ -187,16 +187,16 @@ local function getClosestMob()
     local distance, mob = math.huge;
     for i, v in next, workspace.Mobs:GetChildren() do
         if (v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Nameplate") and v.PrimaryPart and v.Parent and v:FindFirstChild("Entity") and v.Entity.Health.Value > 0) then
-            local distanceFromChar = client:DistanceFromCharacter(v.HumanoidRootPart.Position);
-            if (distanceFromChar < distance) then
-                if (library.flags.bosses) then
-                    for a, b in next, bosses[game.PlaceId] do
-                        if (b == v.Name) then
-                            return v;
-                        end;
+            if (library.flags.bosses) then
+                for a, b in next, bosses[game.PlaceId] do
+                    if (b == v.Name) then
+                        return v;
                     end;
                 end;
+            end;
 
+            local distanceFromChar = client:DistanceFromCharacter(v.HumanoidRootPart.Position);
+            if (distanceFromChar < distance) then
                 if (library.flags.chosen_mob and v.Name == library.flags.chosen_mob or library.flags.aura) then
                     distance = distanceFromChar;
                     mob = v;
@@ -277,7 +277,7 @@ end;
 local rpcKey = getupvalue(services.Combat.Init, 2);
 
 local function attack(target)
-    for i = 1, 4 do
+    for i = 1, library.flags.attack_speed do
         replicatedStorage.Event:FireServer("Skills", {"UseSkill", skill});
         replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", skill, 1, target});
     end;
@@ -298,6 +298,13 @@ autoFarmTab:AddToggle({
 autoFarmTab:AddToggle({
     text = "Prioritise Bosses";
     flag = "bosses"
+});
+
+autoFarmTab:AddSlider({
+    text = "Attack Speed";
+    flag = "attack_speed";
+    min = 1;
+    max = 100;
 });
 
 autoFarmTab:AddList({
