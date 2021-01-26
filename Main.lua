@@ -341,7 +341,7 @@ local itemTab = library:CreateWindow("Items");
 itemTab:AddList({
     text = "Item";
     flag = "chosen_item";
-    values = replicatedStorage.Profiles[client.Name].Inventory;
+    values = replicatedStorage.Profiles[client.Name].Inventory:GetChildren();
 });
 
 itemTab:AddButton({
