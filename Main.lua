@@ -5,6 +5,8 @@
 
 -- Init
 
+local getupvalue = getupvalue or debug.getupvalue;
+
 local players = game:GetService("Players");
 local replicatedStorage = game:GetService("ReplicatedStorage");
 local tweenService = game:GetService("TweenService");
