@@ -347,14 +347,14 @@ itemTab:AddList({
 itemTab:AddButton({
     text = "Dismantle";
     callback = function()
-        replicatedStorage.Event:FireServer("Equipment", {"Dismantle", library.flags.chosen_item});
+        replicatedStorage.Event:FireServer("Equipment", {"Dismantle", replicatedStorage.Profiles[client.Name].Inventory:FindFirstChild(library.flags.chosen_item)});
     end;
 });
 
 itemTab:AddButton({
     text = "Upgrade";
     callback = function()
-        replicatedStorage.Event:FireServer("Equipment", {"Upgrade", library.flags.chosen_item});
+        replicatedStorage.Event:FireServer("Equipment", {"Upgrade", replicatedStorage.Profiles[client.Name].Inventory:FindFirstChild(library.flags.chosen_item)});
     end;
 });
 
