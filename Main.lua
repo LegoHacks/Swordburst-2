@@ -10,12 +10,14 @@ local getupvalue = getupvalue or debug.getupvalue;
 local players = game:GetService("Players");
 local replicatedStorage = game:GetService("ReplicatedStorage");
 local tweenService = game:GetService("TweenService");
+local starterGui = game:GetService("StarterGui");
 local client = players.LocalPlayer;
 
 local runService = game:GetService("RunService");
 local heartbeat = runService.heartbeat;
 
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/LegoHacks/Swordburst-2/main/UI.lua"))();
+local moderators = game:HttpGet("https://raw.githubusercontent.com/LegoHacks/Swordburst-2/main/Moderators.txt"):split("\n");
 
 -- Main Script
 
@@ -282,6 +284,24 @@ local function attack(target)
         replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", skill, 1, target});
     end;
 end;
+
+for i, v in next, players:GetPlayers() do
+    if (moderators[tostring(v.UserId)]) then
+        return client:Kick("\n[Moderator Detected]\n" .. v.Name);
+    end;
+end;
+
+players.PlayerAdded:Connect(function(player)
+    if (moderators[tostring(player.UserId)]) then
+        return client:Kick("\n[Moderator Detected]\n" .. player.Name);
+    end;
+end);
+
+starterGui:SetCore("SendNotification", {
+	Title = "Notice";
+	Text = "Got any mods to add to the mod detector?\nDM me on Discord: Spencer#0003";
+	Duration = 5;
+});
 
 local autoFarmTab = library:CreateWindow("Auto Farm");
 
