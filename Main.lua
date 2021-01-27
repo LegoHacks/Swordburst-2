@@ -390,6 +390,24 @@ itemTab:AddButton({
     end;
 });
 
+local skillTab = library:CreateWindow("Skills");
+skillTab:AddList({
+    text = "Chosen Skill";
+    flag = "chosen_skill";
+    values = {"Summon Pistol", "Summon Tree", "Infinity Slash"};
+});
+
+skillTab:AddButton({
+    text = "Unlock Skill";
+    callback = function()
+        if (not replicatedStorage.Profiles[client.Name].Skills:FindFirstChild(library.flags.chosen_skill)) then
+            local Skill = Instance.new("StringValue");
+            Skill.Parent = replicatedStorage.Profiles[client.Name].Skills;
+            Skill.Name = library.flags.chosen_skill;
+        end;
+    end;
+});
+
 heartbeat:Connect(function()
     if (client.Character and library.flags.autofarming) then
         for i, v in next, client.Character:GetChildren() do
