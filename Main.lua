@@ -7,6 +7,7 @@
 
 local getupvalue = getupvalue or debug.getupvalue;
 
+local httpService = game:GetService("HttpService");
 local players = game:GetService("Players");
 local replicatedStorage = game:GetService("ReplicatedStorage");
 local tweenService = game:GetService("TweenService");
@@ -302,6 +303,21 @@ starterGui:SetCore("SendNotification", {
 	Text = "Got any mods to add to the mod detector?\nDM me on Discord: Spencer#0003";
 	Duration = 5;
 });
+
+spawn(function()
+    for i, v in next, moderators do
+        if (v ~= "") then
+            local res = httpService:JSONDecode(game:HttpGet("https://api.roblox.com/users/" .. v .. "/onlinestatus/"));
+            if (res.IsOnline) then
+                starterGui:SetCore("SendNotification", {
+                    Title = "Notice";
+                    Text = players:GetNameFromUserIdAsync(v) .. " is online, be careful!";
+                    Duration = 5;
+                });
+            end;
+        end;
+    end;
+end);
 
 if (getconnections) then
     for i, v in next, getconnections(client.Idled) do
