@@ -303,6 +303,19 @@ starterGui:SetCore("SendNotification", {
 	Duration = 5;
 });
 
+if (getconnections) then
+    for i, v in next, getconnections(client.Idled) do
+        v:Disable();
+    end;
+else
+    local vu = game:GetService("VirtualUser");
+    client.Idled:Connect(function()
+        vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
+        wait(1);
+        vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
+    end);
+end;
+
 local autoFarmTab = library:CreateWindow("Auto Farm");
 
 autoFarmTab:AddToggle({
