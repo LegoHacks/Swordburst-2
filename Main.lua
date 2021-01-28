@@ -1,5 +1,8 @@
 --[[
     Swordburst 2 GUI
+
+    Mfw Wally complains I stole his idea if checking a mod is online when he stole it from DC :kekw: https://sperg.club/uploads/Ave8juZmTTPHr7tX.png
+
     By Spencer#0003
 ]]
 
