@@ -1,9 +1,15 @@
 --[[
     Swordburst 2 GUI
 
-    Mfw Wally complains I stole his idea if checking a mod is online when he stole it from DC :kekw: https://sperg.club/uploads/Ave8juZmTTPHr7tX.png
-
     By Spencer#0003
+
+    Since creating this script, I've noticed that I've attracted the attention of a fucking retard named Wally.
+
+    1. https://sperg.club/uploads/Ave8juZmTTPHr7tX.png
+    Stolen an idea of DC's then bitches when I copy it too, fucking hypocrite.
+
+    2. https://sperg.club/uploads/70lakQGPmIIPKUIn.png
+    This script is nowhere near as good as DC's paid one you fucking ape.
 ]]
 
 -- Init
