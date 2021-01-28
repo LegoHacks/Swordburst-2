@@ -10,6 +10,8 @@
 
     2. https://sperg.club/uploads/70lakQGPmIIPKUIn.png
     This script is nowhere near as good as DC's paid one you fucking ape.
+
+    3. If you're reading this, I only released this just to piss you off cunt.
 ]]
 
 -- Init
