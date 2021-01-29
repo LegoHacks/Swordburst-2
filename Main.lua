@@ -222,47 +222,6 @@ local function getClosestMob()
     return mob;
 end;
 
-local function getSkill()
-    local skill;
-
-    local left = replicatedStorage.Profiles[client.Name].Equip.Left.Value;
-    local right = replicatedStorage.Profiles[client.Name].Equip.Right.Value;
-
-    if (left ~= 0 and right ~= 0) then
-        skill = "Whirlwind Spin";
-    else
-        local inventoryId = (left == 0 and right or right == 0 and left);
-        local itemName, itemType;
-
-        for i, v in next, replicatedStorage.Profiles[client.Name].Inventory:GetChildren() do
-            if (v.Value == inventoryId) then
-                itemName = v.Name;
-                break;
-            end;
-        end;
-
-        local item = replicatedStorage.Database.Items:FindFirstChild(itemName);
-
-        if (item) then
-            itemType = item:FindFirstChild("Class") and item.Class.Value;
-        end;
-
-        if (itemType and itemType == "1HSword") then
-            skill = "Sweeping Strike";
-        elseif (itemType and itemType == "2HSword") then
-            skill = "Downward Smash"
-        elseif (itemType and itemType == "Katana") then
-            skill = "Leaping Slash";
-        else
-            skill = "Piercing Dash";
-        end;
-    end;
-
-    return skill;
-end;
-
-local skill = getSkill();
-
 local oldDelay = getrenv().delay;
 getrenv().delay = function(...)
     if (library.flags.instant_trade) then
@@ -292,8 +251,8 @@ local rpcKey = getupvalue(services.Combat.Init, 2);
 
 local function attack(target)
     for i = 1, library.flags.attack_speed do
-        replicatedStorage.Event:FireServer("Skills", {"UseSkill", skill});
-        replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", skill, 1, target});
+        replicatedStorage.Event:FireServer("Skills", {"UseSkill", "Summon Pistol"});
+        replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", "Summon Pistol", 1, target});
     end;
 end;
 
