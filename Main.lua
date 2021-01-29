@@ -302,6 +302,19 @@ else
     end);
 end;
 
+do
+    --> Thanks ICEE for the notification idea and function.
+    local ui, result = services.UI.Notification.new(client.PlayerGui.CardinalUI.PlayerUI.Templates.Notification.Flagged);
+    
+    ui.Confirm.MouseButton1Click:Connect(function()
+        result:Destroy();
+    end);
+    
+    ui.Content.Title.Text = "IMPORTANT";
+    ui.Content.Message.Text = "New script coming soon? :flushed:";
+    ui.Confirm.Text = "That's epic bro!";
+end;
+
 local autoFarmTab = library:CreateWindow("Auto Farm");
 
 autoFarmTab:AddToggle({
