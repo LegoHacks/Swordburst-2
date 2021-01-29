@@ -326,6 +326,20 @@ autoFarmTab:AddSlider({
     max = 100;
 });
 
+autoFarmTab:AddSlider({
+    text = "Attack Range";
+    flag = "attack_range";
+    min = 1;
+    max = 60;
+});
+
+autoFarmTab:AddSlider({
+    text = "Tween Speed";
+    flag = "tween_speed";
+    min = 35;
+    max = 100;
+});
+
 autoFarmTab:AddList({
     text = "Chosen Mob";
     flag = "chosen_mob";
@@ -445,7 +459,7 @@ spawn(function()
             if (mob) then
                 pcall(function()
                     client.Character.Humanoid:ChangeState(11);
-                    tweenService:Create(client.Character.HumanoidRootPart, TweenInfo.new(((client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position)).magnitude / 40), {CFrame = mob.PrimaryPart.CFrame * CFrame.new(0, 20, 0)}):Play();
+                    tweenService:Create(client.Character.HumanoidRootPart, TweenInfo.new(((client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position)).Magnitude / library.flags.tween_speed), {CFrame = mob.PrimaryPart.CFrame * CFrame.new(0, 20, 0)}):Play();
                 end);
             end;
         end;
@@ -458,7 +472,7 @@ spawn(function()
         if (library.flags.autofarming or library.flags.aura) then
             local mob = getClosestMob();
 
-            if (mob and mob:FindFirstChild("HumanoidRootPart") and mob.HumanoidRootPart and (client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position).magnitude <= 60) then
+            if (mob and mob:FindFirstChild("HumanoidRootPart") and mob.HumanoidRootPart and (client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position).Magnitude <= library.flags.attack_range) then
                 repeat
                     attack(mob);
                     wait(0.15);
