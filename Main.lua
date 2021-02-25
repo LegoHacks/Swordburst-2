@@ -311,7 +311,7 @@ do
     end);
     
     ui.Content.Title.Text = "IMPORTANT";
-    ui.Content.Message.Text = "New script coming soon? :flushed:";
+    ui.Content.Message.Text = "Looking for a new Discord bot?\ndiscord.gg/wfyhsxZ6CV";
     ui.Confirm.Text = "That's epic bro!";
 end;
 
