@@ -3,7 +3,15 @@
 
     By Spencer#0003
 
-    Update sponsored by Wally.
+    Since creating this script, I've noticed that I've attracted the attention of a fucking retard named Wally.
+
+    1. https://sperg.club/uploads/Ave8juZmTTPHr7tX.png
+    Stolen an idea of DC's then bitches when I copy it too, fucking hypocrite.
+
+    2. https://sperg.club/uploads/70lakQGPmIIPKUIn.png
+    This script is nowhere near as good as DC's paid one you fucking ape.
+
+    3. If you're reading this, I only released this just to piss you off cunt.
 ]]
 
 -- Init
@@ -328,7 +336,7 @@ autoFarmTab:AddSlider({
     text = "Attack Speed";
     flag = "attack_speed";
     min = 1;
-    max = 100;
+    max = 10;
 });
 
 autoFarmTab:AddSlider({
@@ -464,7 +472,7 @@ spawn(function()
             if (mob) then
                 pcall(function()
                     client.Character.Humanoid:ChangeState(11);
-                    tweenService:Create(client.Character.HumanoidRootPart, TweenInfo.new(((client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position)).Magnitude / library.flags.tween_speed), {CFrame = mob.PrimaryPart.CFrame * CFrame.new(0, 20, 0)}):Play();
+                    tweenService:Create(client.Character.HumanoidRootPart, TweenInfo.new(((client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position)).Magnitude / library.flags.tween_speed), {CFrame = mob.PrimaryPart.CFrame * CFrame.new(0, 15, 0)}):Play();
                 end);
             end;
         end;
@@ -480,7 +488,7 @@ spawn(function()
             if (mob and mob:FindFirstChild("HumanoidRootPart") and mob.HumanoidRootPart and (client.Character.HumanoidRootPart.Position - mob.HumanoidRootPart.Position).Magnitude <= library.flags.attack_range) then
                 repeat
                     attack(mob);
-                    wait(0.15);
+                    wait(0.3);
                 until not mob or not mob:FindFirstChild("Nameplate") or not mob:FindFirstChild("Healthbar") or not mob:FindFirstChild("Entity");
             end;
         end;
