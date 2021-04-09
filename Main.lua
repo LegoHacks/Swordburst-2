@@ -189,7 +189,6 @@ local bosses = {
     };
 };
 
-
 local function getClosestMob()
     local distance, mob = math.huge;
     for i, v in next, workspace.Mobs:GetChildren() do
@@ -241,7 +240,6 @@ local services, crystalForge; do
 end;
 
 local rpcKey = getupvalue(services.Combat.Init, 2);
-
 local function attack(target)
     -- for i = 1, library.flags.attack_speed do --> Attack speed was patched.
         replicatedStorage.Event:FireServer("Skills", {"UseSkill", "Summon Pistol"});
@@ -263,15 +261,15 @@ end);
 
 spawn(function()
     for i, v in next, moderators do
-        if (v ~= "") then
-            local res = httpService:JSONDecode(game:HttpGet("https://api.roblox.com/users/" .. v .. "/onlinestatus/"));
-            if (res.IsOnline) then
-                starterGui:SetCore("SendNotification", {
-                    Title = "Notice";
-                    Text = players:GetNameFromUserIdAsync(v) .. " is online, be careful!";
-                    Duration = 5;
-                });
-            end;
+        if (v == "") then continue end;
+
+        local res = httpService:JSONDecode(game:HttpGet("https://api.roblox.com/users/" .. v .. "/onlinestatus/"));
+        if (res.IsOnline) then
+            starterGui:SetCore("SendNotification", {
+                Title = "Notice";
+                Text = players:GetNameFromUserIdAsync(v) .. " is online, be careful!";
+                Duration = 5;
+            });
         end;
     end;
 end);
@@ -378,6 +376,30 @@ miscTab:AddButton({
         end;
     end;
 });
+
+do
+    -- Trash code here but not my problem lolololol
+    local locations = require(replicatedStorage.Database.Locations);
+    local floorTp = library:CreateWindow("Floor TP");
+
+    for i, v in next, locations.floors do
+        floorTp:AddButton({
+            text = v.Name;
+            callback = function()
+                if (not client.Character) then return end;
+                client.Character:BreakJoints();
+                client.CharacterAdded:Wait();
+                for i, v in next, workspace:GetDescendants() do
+                    if (v.Name ~= "TeleportPad" or not client.Character) then continue end;
+                    repeat wait() until client.Character:FindFirstChild("HumanoidRootPart");
+                    client.Character.HumanoidRootPart.CFrame = v.CFrame;
+                    break;
+                end;
+                replicatedStorage.Function:InvokeServer("Teleport", {"Teleport", v.PlaceId});
+            end;
+        });
+    end;
+end;
 
 local itemTab = library:CreateWindow("Items");
 
