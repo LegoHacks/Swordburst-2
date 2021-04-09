@@ -2,16 +2,9 @@
     Swordburst 2 GUI
 
     By Spencer#0003
+    Sponsored by Wally
 
-    Since creating this script, I've noticed that I've attracted the attention of a fucking retard named Wally.
-
-    1. https://sperg.club/uploads/Ave8juZmTTPHr7tX.png
-    Stolen an idea of DC's then bitches when I copy it too, fucking hypocrite.
-
-    2. https://sperg.club/uploads/70lakQGPmIIPKUIn.png
-    This script is nowhere near as good as DC's paid one you fucking ape.
-
-    3. If you're reading this, I only released this just to piss you off cunt.
+    (If I get another retard DMing me about this fucking script, I'ma lose my shit)
 ]]
 
 -- Init
@@ -250,10 +243,10 @@ end;
 local rpcKey = getupvalue(services.Combat.Init, 2);
 
 local function attack(target)
-    for i = 1, library.flags.attack_speed do
+    -- for i = 1, library.flags.attack_speed do --> Attack speed was patched.
         replicatedStorage.Event:FireServer("Skills", {"UseSkill", "Summon Pistol"});
         replicatedStorage.Event:FireServer("Combat", rpcKey, {"Attack", "Summon Pistol", "1", target});
-    end;
+    -- end;
 end;
 
 for i, v in next, players:GetPlayers() do
@@ -267,12 +260,6 @@ players.PlayerAdded:Connect(function(player)
         return client:Kick("\n[Moderator Detected]\n" .. player.Name);
     end;
 end);
-
-starterGui:SetCore("SendNotification", {
-	Title = "Notice";
-	Text = "Got any mods to add to the mod detector?\nDM me on Discord: Spencer#0003";
-	Duration = 5;
-});
 
 spawn(function()
     for i, v in next, moderators do
@@ -311,7 +298,7 @@ do
     end);
     
     ui.Content.Title.Text = "IMPORTANT";
-    ui.Content.Message.Text = "This update was sponsored by Wally";
+    ui.Content.Message.Text = "This update was sponsored by Wally\nNOTE: I am not required to update this, stop demanding updates in my DMs.";
     ui.Confirm.Text = "That's epic bro!";
 end;
 
@@ -332,12 +319,15 @@ autoFarmTab:AddToggle({
     flag = "bosses"
 });
 
-autoFarmTab:AddSlider({
-    text = "Attack Speed";
-    flag = "attack_speed";
-    min = 1;
-    max = 10;
-});
+--[[
+    -- This is patched
+    autoFarmTab:AddSlider({
+        text = "Attack Speed";
+        flag = "attack_speed";
+        min = 1;
+        max = 10;
+    });
+]]
 
 autoFarmTab:AddSlider({
     text = "Attack Range";
