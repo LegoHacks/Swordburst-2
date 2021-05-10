@@ -248,13 +248,13 @@ local function attack(target)
 end;
 
 for i, v in next, players:GetPlayers() do
-    if (moderators[tostring(v.UserId)]) then
+    if (table.find(moderators, tostring(v.UserId))) then
         return client:Kick("\n[Moderator Detected]\n" .. v.Name);
     end;
 end;
 
 players.PlayerAdded:Connect(function(player)
-    if (moderators[tostring(player.UserId)]) then
+    if (table.find(moderators, tostring(player.UserId))) then
         return client:Kick("\n[Moderator Detected]\n" .. player.Name);
     end;
 end);
