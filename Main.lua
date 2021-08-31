@@ -7,6 +7,10 @@
     (If I get another retard DMing me about this fucking script, I'ma lose my shit)
 ]]
 
+if (true) then
+    return game.Players.LocalPlayer:Kick'\npatched :kekw:';
+end;
+
 -- Init
 
 local getupvalue = getupvalue or debug.getupvalue;
