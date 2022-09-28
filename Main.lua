@@ -8,7 +8,7 @@
 ]]
 
 if (true) then
-    return game.Players.LocalPlayer:Kick'\npatched :kekw:';
+    return game.Players.LocalPlayer:Kick'\nThis script is patched. An unpatched version can be found in my hub (https://acedia.cc/discord).';
 end;
 
 -- Init
